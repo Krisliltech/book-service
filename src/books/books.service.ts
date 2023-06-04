@@ -20,9 +20,30 @@ export class BooksService {
     const result = await this.bookRepository.findOne({
       where: { id }
     })
+
     if (!result) {
       throw new HttpException(`The book with id: ${id} was not found`, HttpStatus.NOT_FOUND);
     }
     return result
+  }
+
+  async saveBooks(title: string, author: string): Promise<BooksDto> {
+    if (!title || !author) {
+      throw new HttpException('name_of_book or author can not be empty', HttpStatus.BAD_REQUEST);
+    }
+    
+    const dataInDB = await this.bookRepository.findOne({
+       where: { title }
+    })
+    if (dataInDB) {
+      throw new HttpException(`${title} book already exist`, HttpStatus.CONFLICT);
+    }
+         
+    const dataToDB =  {
+      title,
+      author,
+    }
+    const result = await this.bookRepository.save(dataToDB)
+    return result  
   }
 }

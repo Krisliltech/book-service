@@ -6,7 +6,7 @@ export class BookEntity {
   id: number;
 
   @Column({ unique: true})
-  names_of_book: string;
+  title: string;
 
   @Column()
   author: string

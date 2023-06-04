@@ -1,7 +1,7 @@
 export interface BooksDto {
   id: number;
-  names_of_book: string;
+  title: string;
   author: string;
-  createdAt: string;
+  createdAt?: string;
   updatedAt?: string;
 }

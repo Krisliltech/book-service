@@ -13,7 +13,13 @@ export class BooksController {
   }
 
   @Get(':id')
-async getBookById(@Param('id') id: string): Promise<BooksDto> {
-  return await this.booksService.getBookId(Number(id));
-}
+  async getBookById(@Param('id') id: string): Promise<BooksDto> {
+    return await this.booksService.getBookId(Number(id));
+  }
+
+  @Post()
+  async saveBooks(@Body() body: { title: string, author: string }): Promise<BooksDto> {
+    const { title, author } = body;
+    return await this.booksService.saveBooks(title, author);
+  }
 }
