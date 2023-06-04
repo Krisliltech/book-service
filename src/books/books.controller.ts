@@ -11,4 +11,9 @@ export class BooksController {
   async getBooks(): Promise<BooksDto[]> {
     return await this.booksService.getBooks();
   }
+
+  @Get(':id')
+async getBookById(@Param('id') id: string): Promise<BooksDto> {
+  return await this.booksService.getBookId(Number(id));
+}
 }

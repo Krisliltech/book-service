@@ -15,4 +15,14 @@ export class BooksService {
     const result = await this.bookRepository.find()       
     return result
   }
+
+  async getBookId(id:number): Promise<BooksDto>{
+    const result = await this.bookRepository.findOne({
+      where: { id }
+    })
+    if (!result) {
+      throw new HttpException(`The book with id: ${id} was not found`, HttpStatus.NOT_FOUND);
+    }
+    return result
+  }
 }
