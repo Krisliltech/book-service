@@ -29,7 +29,7 @@ export class BooksService {
 
   async saveBooks(title: string, author: string): Promise<BooksDto> {
     if (!title || !author) {
-      throw new HttpException('name_of_book or author can not be empty', HttpStatus.BAD_REQUEST);
+      throw new HttpException('title or author can not be empty', HttpStatus.BAD_REQUEST);
     }
     
     const dataInDB = await this.bookRepository.findOne({
@@ -45,5 +45,21 @@ export class BooksService {
     }
     const result = await this.bookRepository.save(dataToDB)
     return result  
+  }
+
+  async updateBookId(id:number, data: {title: string, author: string}): Promise<BooksDto>{
+    if(!data.title && !data.author){
+        throw new HttpException('An update field is required', HttpStatus.BAD_REQUEST); 
+    }
+    const dataInDB = await this.getBookId(id)
+    const dataToDB =  {
+      id: dataInDB.id,
+      title: data.title || dataInDB.title,
+      author: data.author || dataInDB.author,
+      updatedAt: new Date().toISOString()
+    }
+  
+    const result = await this.bookRepository.save(dataToDB)
+    return result
   }
 }

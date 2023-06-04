@@ -22,4 +22,9 @@ export class BooksController {
     const { title, author } = body;
     return await this.booksService.saveBooks(title, author);
   }
+
+  @Put(':id')
+  async updateBookById(@Body() body: { title: string, author: string }, @Param('id') id: string): Promise<BooksDto> {
+    return await this.booksService.updateBookId(Number(id), body);
+  } 
 }
