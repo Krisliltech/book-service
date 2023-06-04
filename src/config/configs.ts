@@ -6,7 +6,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   port: Number(process.env.PORT),
   username: process.env.USER,
   database: process.env.DATABASE_NAME,
-  password: '',
+  password: process.env.PASSWORD,
   entities: [__dirname + '/../dist/**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/../dist/migrations/*.js'],
   synchronize: false,

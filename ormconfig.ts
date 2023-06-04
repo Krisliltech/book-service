@@ -9,7 +9,7 @@ const config: PostgresConnectionOptions = {
     host: process.env.HOST,
     port: Number(process.env.PORT),
     username: process.env.USER,
-    password: '',
+    password: process.env.PASSWORD,
     database: process.env.DATABASE_NAME,
     entities: [
         'dist/src/**/*.entity{.ts,.js}',

@@ -26,14 +26,32 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## This is a book service application
+
+**Technologies used are**: NodeJs, NestJs, Postgres and TypeORM
+
 ## Installation
 
+To clone the project:
+```bash
+https://github.com/Krisliltech/bank_version_API
+```
+
+`cd` into the `book-service` directory
+```bash
+cd boook-service
+```
+
+create a `.env` file with actual values similar to the `.env-example` file.
+
+install project dependencies
 ```bash
 $ yarn install
 ```
 
 ## Running the app
 
+to run the project
 ```bash
 # development
 $ yarn run start
@@ -47,6 +65,7 @@ $ yarn run start:prod
 
 ## Test
 
+to run the test cases for the project
 ```bash
 # unit tests
 $ yarn run test
@@ -57,6 +76,20 @@ $ yarn run test:e2e
 # test coverage
 $ yarn run test:cov
 ```
+
+## How to use 
+After creating a .env by using the .env-sample format, proceed to use the `/books` POST endpoint to create books. 
+Use either the `/books` or `/books/:id` to get all books and a single book by id respectively with the GET endpoint to get book(s).
+Use the `/books/:id` to update a single book by id with the PUT endpoint while the `/books/:id` to delete a single book by id with the DELETE endpoint.
+
+
+## Endpoints Provided
+```
+/books: to create # POST Request
+/books to get all books # GET Request
+/books/:id to get a book by id # GET Request
+/books/:id to update a book by id # PUT Request
+/books/:id to delete a book by id # DELETE Request
 
 ## Support
 
