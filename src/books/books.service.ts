@@ -62,4 +62,11 @@ export class BooksService {
     const result = await this.bookRepository.save(dataToDB)
     return result
   }
+
+  async deleteBookId(id:number): Promise<BooksDto>{
+    const dataInDB = await this.getBookId(id)
+  
+    await this.bookRepository.delete(id) 
+    return dataInDB
+  }
 }

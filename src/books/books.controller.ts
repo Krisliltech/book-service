@@ -27,4 +27,9 @@ export class BooksController {
   async updateBookById(@Body() body: { title: string, author: string }, @Param('id') id: string): Promise<BooksDto> {
     return await this.booksService.updateBookId(Number(id), body);
   } 
+
+  @Delete(':id')
+  async deleteBookById(@Param('id') id: string): Promise<BooksDto> {
+    return await this.booksService.deleteBookId(Number(id));
+  }
 }
