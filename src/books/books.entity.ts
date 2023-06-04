@@ -12,8 +12,8 @@ export class BookEntity {
   author: string
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: string;
+  createdAt?: string;
 
   @Column({ type: 'timestamp', nullable: true })
-  updatedAt: string;
+  updatedAt?: string;
 }

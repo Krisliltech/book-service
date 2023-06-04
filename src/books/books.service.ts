@@ -16,7 +16,7 @@ export class BooksService {
     return result
   }
 
-  async getBookId(id:number): Promise<BooksDto>{
+  async getBookById(id:number): Promise<BooksDto>{
     const result = await this.bookRepository.findOne({
       where: { id }
     })
@@ -47,11 +47,11 @@ export class BooksService {
     return result  
   }
 
-  async updateBookId(id:number, data: {title: string, author: string}): Promise<BooksDto>{
+  async updateBookById(id:number, data: {title: string, author: string}): Promise<BooksDto>{
     if(!data.title && !data.author){
         throw new HttpException('An update field is required', HttpStatus.BAD_REQUEST); 
     }
-    const dataInDB = await this.getBookId(id)
+    const dataInDB = await this.getBookById(id)
     const dataToDB =  {
       id: dataInDB.id,
       title: data.title || dataInDB.title,
@@ -63,8 +63,8 @@ export class BooksService {
     return result
   }
 
-  async deleteBookId(id:number): Promise<BooksDto>{
-    const dataInDB = await this.getBookId(id)
+  async deleteBookById(id:number): Promise<BooksDto>{
+    const dataInDB = await this.getBookById(id)
   
     await this.bookRepository.delete(id) 
     return dataInDB

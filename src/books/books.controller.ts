@@ -14,7 +14,7 @@ export class BooksController {
 
   @Get(':id')
   async getBookById(@Param('id') id: string): Promise<BooksDto> {
-    return await this.booksService.getBookId(Number(id));
+    return await this.booksService.getBookById(Number(id));
   }
 
   @Post()
@@ -25,11 +25,11 @@ export class BooksController {
 
   @Put(':id')
   async updateBookById(@Body() body: { title: string, author: string }, @Param('id') id: string): Promise<BooksDto> {
-    return await this.booksService.updateBookId(Number(id), body);
+    return await this.booksService.updateBookById(Number(id), body);
   } 
 
   @Delete(':id')
   async deleteBookById(@Param('id') id: string): Promise<BooksDto> {
-    return await this.booksService.deleteBookId(Number(id));
+    return await this.booksService.deleteBookById(Number(id));
   }
 }
