@@ -34,7 +34,7 @@
 
 To clone the project:
 ```bash
-https://github.com/Krisliltech/bank_version_API
+https://github.com/Krisliltech/book-service
 ```
 
 `cd` into the `book-service` directory
