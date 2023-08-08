@@ -1,9 +1,10 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import 'dotenv/config'
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
   host: process.env.HOST,
-  port: Number(process.env.PORT),
+  port: Number(process.env.DATABASE_PORT),
   username: process.env.USER,
   database: process.env.DATABASE_NAME,
   password: process.env.PASSWORD,
